@@ -12,6 +12,6 @@
  */
 
 // FE-Modules
-$GLOBALS['TL_LANG']['FMD']['news4wardList']    = array('Tagcloud', 'Fügt der Seite eine Tagcloud hinzu.');
+$GLOBALS['TL_LANG']['FMD']['news4wardTags']    = array('Tagcloud', 'Fügt der Seite eine Tagcloud hinzu.');
 
 ?>
