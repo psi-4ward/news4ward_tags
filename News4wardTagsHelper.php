@@ -41,7 +41,7 @@ class News4wardTagsHelper extends Controller
 
 		$arrTags = array();
 
-		$objTags = $this->Database->prepare('SELECT tag FROM tl_news4ward_tag WHERE pid=?')->execute($objArticles->pid);
+		$objTags = $this->Database->prepare('SELECT tag FROM tl_news4ward_tag WHERE pid=?')->execute($objArticles->id);
 		while($objTags->next())
 		{
 			$arrTags[] = array
