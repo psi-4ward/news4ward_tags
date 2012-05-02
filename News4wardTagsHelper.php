@@ -14,6 +14,9 @@
 class News4wardTagsHelper extends Controller
 {
 
+	protected static $arrJumpTo = array();
+
+
 	/**
 	 * Return the WHERE-condition if a the url has an tag-parameter
 	 * @return bool|string
@@ -39,16 +42,52 @@ class News4wardTagsHelper extends Controller
 	{
 		$this->import('Database');
 
+
 		$arrTags = array();
 
 		$objTags = $this->Database->prepare('SELECT tag FROM tl_news4ward_tag WHERE pid=?')->execute($objArticles->id);
+		if(!$objTags->numRows)
+		{
+			$objTemplate->tags = array();
+			return;
+		}
+
+
+		if(!isset(self::$arrJumpTo[$objArticles->pid]))
+		{
+			$objJumpTo = $this->Database->prepare('SELECT tl_page.id, tl_page.alias
+													FROM tl_page
+													LEFT JOIN tl_news4ward ON (tl_page.id=tl_news4ward.jumpToList)
+													WHERE tl_news4ward.id=?')
+								->execute($objArticles->pid);
+			if($objJumpTo->numRows)
+			{
+				self::$arrJumpTo[$objArticles->pid] = $objJumpTo->row();
+			}
+			else
+			{
+				self::$arrJumpTo[$objArticles->pid] = false;
+			}
+		}
+
 		while($objTags->next())
 		{
-			$arrTags[] = array
-			(
-				'tag' 	=> $objTags->tag,
-				'href'	=> $this->generateFrontendUrl($GLOBALS['objPage']->row(),'/tag/'.urlencode($objTags->tag))
-			);
+			if(self::$arrJumpTo[$objArticles->pid])
+			{
+				$arrTags[] = array
+				(
+					'tag' 	=> $objTags->tag,
+					'href'	=> $this->generateFrontendUrl(self::$arrJumpTo[$objArticles->pid],'/tag/'.urlencode($objTags->tag))
+				);
+			}
+			else
+			{
+				$arrTags[] = array
+				(
+					'tag' 	=> $objTags->tag,
+					'href'	=> $this->generateFrontendUrl($GLOBALS['objPage']->row(),'/tag/'.urlencode($objTags->tag))
+				);
+			}
 		}
 
 		$objTemplate->tags = $arrTags;
