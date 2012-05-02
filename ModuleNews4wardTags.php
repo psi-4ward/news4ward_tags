@@ -97,6 +97,7 @@ class ModuleNews4wardTags extends News4ward
 		{
 			$arrTags[$k]['size'] = $this->GetTagSizeLogarithmic($v['cnt'],$minCount,$maxCount);
 			$arrTags[$k]['href'] = $this->generateFrontendUrl($objJumpTo->row(),'/tag/'.urlencode($v['tag']));
+			$arrTags[$k]['active'] = ($this->Input->get('tag') == $v['tag']);
 		}
 
 		// randomly sort the array
