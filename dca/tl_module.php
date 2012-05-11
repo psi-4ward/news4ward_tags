@@ -46,6 +46,6 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['news4ward_tags_tresholds'] = array
 );
 
 // Palette
-$GLOBALS['TL_DCA']['tl_module']['palettes']['news4wardTags']    = '{title_legend},name,headline,type;{config_legend},news4ward_archives,news4ward_tags_count,news4ward_tags_minsize,news4ward_tags_maxsize,news4ward_tags_tresholds;{redirect_legend},jumpTo;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['news4wardTags']    = '{title_legend},name,headline,type;{config_legend},news4ward_archives,news4ward_filterHint,news4ward_tags_count,news4ward_tags_minsize,news4ward_tags_maxsize,news4ward_tags_tresholds;{redirect_legend},jumpTo;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
 
 ?>

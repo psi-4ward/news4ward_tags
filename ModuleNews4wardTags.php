@@ -98,6 +98,21 @@ class ModuleNews4wardTags extends News4ward
 			$arrTags[$k]['size'] = $this->GetTagSizeLogarithmic($v['cnt'],$minCount,$maxCount);
 			$arrTags[$k]['href'] = $this->generateFrontendUrl($objJumpTo->row(),'/tag/'.urlencode($v['tag']));
 			$arrTags[$k]['active'] = ($this->Input->get('tag') == $v['tag']);
+
+			// set active item for the active filter hinting
+			if($this->Input->get('tag') == $v['tag'])
+			{
+				if(!isset($GLOBALS['news4ward_filter_hint']))
+				{
+					$GLOBALS['news4ward_filter_hint'] = array();
+				}
+
+				$GLOBALS['news4ward_filter_hint']['tag'] = array
+				(
+					'hint'  	=> $this->news4ward_filterHint,
+					'value'		=> $v['tag']
+				);
+			}
 		}
 
 		// randomly sort the array
