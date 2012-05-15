@@ -95,6 +95,9 @@ class ModuleNews4wardTags extends News4ward
 		// calc font-sizes and jumpto-pages
 		foreach($arrTags as $k => $v)
 		{
+			// skip empty tags
+			if(!strlen(trim($v['tag']))) continue;
+
 			$arrTags[$k]['size'] = $this->GetTagSizeLogarithmic($v['cnt'],$minCount,$maxCount);
 			$arrTags[$k]['href'] = $this->generateFrontendUrl($objJumpTo->row(),'/tag/'.urlencode($v['tag']));
 			$arrTags[$k]['active'] = ($this->Input->get('tag') == $v['tag']);
