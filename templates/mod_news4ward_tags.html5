@@ -6,7 +6,7 @@
 
 <div class="tags">
 <?php foreach($this->tags as $tag): ?>
-<a href="<?php echo $tag['href'];?>" style="font-size:<?php echo $tag['size'];?>px"<?php if($tag['active']) echo ' class="active"';?>><?php echo $tag['tag'];?></a>
+<a href="<?php echo $tag['href'];?>" style="font-size:<?php echo $tag['size'].$this->unit;?>"<?php if($tag['active']) echo ' class="active"';?>><?php echo $tag['tag'];?></a>
 <?php endforeach; ?>
 </div>
 

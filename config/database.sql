@@ -29,4 +29,5 @@ CREATE TABLE `tl_module` (
   `news4ward_tags_maxsize` int(10) unsigned NOT NULL default '10',
   `news4ward_tags_minsize` int(10) unsigned NOT NULL default '24',
   `news4ward_tags_tresholds` int(10) unsigned NOT NULL default '7'
+  `news4ward_tags_unit` char(2) NOT NULL default ''
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;

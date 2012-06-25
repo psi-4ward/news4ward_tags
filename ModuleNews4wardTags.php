@@ -124,6 +124,8 @@ class ModuleNews4wardTags extends News4ward
 		// randomly sort the array
 		shuffle($arrTags);
 		$this->Template->tags = $arrTags;
+
+		$this->Template->unit = $this->news4ward_tags_unit;
 	}
 
 

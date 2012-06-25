@@ -16,3 +16,4 @@ $GLOBALS['TL_LANG']['tl_module']['news4ward_tags_count']  		= array('Anzahl ange
 $GLOBALS['TL_LANG']['tl_module']['news4ward_tags_minsize']  	= array('Kleinste Schrift', 'Pixelwert der kleinsten Schrift');
 $GLOBALS['TL_LANG']['tl_module']['news4ward_tags_maxsize']  	= array('Größte Schrift', 'Pixelwert der größten Schrift');
 $GLOBALS['TL_LANG']['tl_module']['news4ward_tags_tresholds']  	= array('Abstufungen', 'Die Anzahl der Abstufungen.');
+$GLOBALS['TL_LANG']['tl_module']['news4ward_tags_unit']  		= array('Einheit', 'Hier können Sie die Einheit der Textgröße angeben.');
