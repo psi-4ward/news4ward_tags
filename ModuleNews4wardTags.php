@@ -60,6 +60,9 @@ class ModuleNews4wardTags extends News4ward
 											 FROM tl_news4ward_tag
 											 LEFT JOIN tl_news4ward_article ON (tl_news4ward_article.id = tl_news4ward_tag.pid)
 											 WHERE tl_news4ward_article.pid IN ('.implode(',',$this->news_archives).')
+											 '.((!BE_USER_LOGGED_IN) ? " AND (tl_news4ward_article.start='' OR tl_news4ward_article.start<".time().")
+											 							 AND (tl_news4ward_article.stop='' OR tl_news4ward_article.stop>".time().")
+											 							 AND tl_news4ward_article.status='published'" : '').'
 											 GROUP BY tag
 											 ORDER BY cnt DESC');
 
