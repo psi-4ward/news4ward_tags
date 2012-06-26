@@ -17,23 +17,11 @@ $GLOBALS['TL_DCA']['tl_news4ward_article']['fields']['tags'] = array
 (
 	'label'                   => &$GLOBALS['TL_LANG']['tl_news4ward_article']['tags'],
 	'exclude'                 => true,
-	'inputType'				  => 'multiColumnWizard',
+	'inputType'				  => 'tags',
 	'save_callback'			  => array(array('tl_news4ward_article_tags','saveTags')),
-	'load_callback'			  => array(array('tl_news4ward_article_tags','loadTags')),
-	'eval'					  => array
-	(
-		'flatArray' => true,
-		'doNotSaveEmpty' => true,
-		'columnFields' => array
-		(
-			'tag' => array
-			(
-				'label'		=> ' ',
-				'inputType' => 'autocompleterTextfield',
-				'foreignKey' => 'tl_news4ward_tag.tag'
-			)
-		)
-	)
+	'load_callback'		  	  => array(array('tl_news4ward_article_tags','loadTags')),
+	'options_callback'		  => array('tl_news4ward_article_tags','getAllTags'),
+	'eval'					  => array('doNotSaveEmpty' => true)
 );
 
 // alter the palette
@@ -57,15 +45,23 @@ class tl_news4ward_article_tags extends System
 	}
 
 
+	public function getAllTags()
+	{
+		$objTag = $this->Database->prepare('SELECT DISTINCT(tag) FROM tl_news4ward_tag ORDER BY tag')->execute();
+		return $objTag->fetchEach('tag');
+	}
+
+
 	/**
 	 * Load Tags from the tags-table
+	 *
 	 * @param string $varValue
 	 * @param DataContainer $dc
 	 * @return array
 	 */
-	public function loadTags($varValue, DataContainer $dc)
+	public function loadTags($varValue,DataContainer $dc)
 	{
-		$objTag = $this->Database->prepare('SELECT * FROM tl_news4ward_tag WHERE pid=? ORDER BY tag')->execute($dc->id);
+		$objTag = $this->Database->prepare('SELECT tag FROM tl_news4ward_tag WHERE pid=? ORDER BY tag')->execute($dc->id);
 		return $objTag->fetchEach('tag');
 	}
 
