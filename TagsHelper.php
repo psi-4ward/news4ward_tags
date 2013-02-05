@@ -1,4 +1,4 @@
-<?php if (!defined('TL_ROOT')) die('You cannot access this file directly!');
+<?php
 
 /**
  * News4ward
@@ -10,8 +10,9 @@
  * @filesource
  * @licence LGPL
  */
+namespace Psi\News4ward;
 
-class News4wardTagsHelper extends Controller
+class TagsHelper extends \Controller
 {
 
 	protected static $arrJumpTo = array();

@@ -18,10 +18,12 @@
  */
  
 // FE-Modules
-$GLOBALS['FE_MOD']['news4ward']['news4wardTags'] = 'ModuleNews4wardTags';
+$GLOBALS['FE_MOD']['news4ward']['news4wardTags'] = '\News4ward\Module\Tags';
 
 // News4wardList Filter HOOK
-$GLOBALS['TL_HOOKS']['News4wardListFilter'][] = array('News4wardTagsHelper','listFilter');
+$GLOBALS['TL_HOOKS']['News4wardListFilter'][] = array('\News4ward\TagsHelper','listFilter');
 
 // News4wardParseArticle HOOK
-$GLOBALS['TL_HOOKS']['News4wardParseArticle'][] = array('News4wardTagsHelper','tagsParseArticle');
+$GLOBALS['TL_HOOKS']['News4wardParseArticle'][] = array('\News4ward\TagsHelper','tagsParseArticle');
+
+?>
