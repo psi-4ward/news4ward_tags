@@ -123,7 +123,8 @@ class Tags extends \News4ward\Module\Module
 		}
 
 		// randomly sort the array
-		shuffle($arrTags);
+		if($this->news4ward_tags_shuffle) shuffle($arrTags);
+		else natsort($arrTags);
 		$this->Template->tags = $arrTags;
 
 		$this->Template->unit = $this->news4ward_tags_unit;

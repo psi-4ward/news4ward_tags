@@ -17,3 +17,4 @@ $GLOBALS['TL_LANG']['tl_module']['news4ward_tags_minsize']  	= array('Minimum fo
 $GLOBALS['TL_LANG']['tl_module']['news4ward_tags_maxsize']  	= array('Maximum font size', 'Maximum font size in pixels.');
 $GLOBALS['TL_LANG']['tl_module']['news4ward_tags_tresholds']  	= array('Graduation', 'Here you can enter graduation value.');
 $GLOBALS['TL_LANG']['tl_module']['news4ward_tags_unit']  		= array('Graduation unit', 'Here you can select the graduation unit.');
+$GLOBALS['TL_LANG']['tl_module']['news4ward_tags_shuffle']  	= array('Random sort', 'Sort the tags randomly.');
