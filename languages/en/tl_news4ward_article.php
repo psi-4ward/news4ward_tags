@@ -1,4 +1,4 @@
-<?php if (!defined('TL_ROOT')) die('You cannot access this file directly!');
+<?php
 
 /**
  * News4ward
@@ -13,6 +13,3 @@
 
 $GLOBALS['TL_LANG']['tl_news4ward_article']['tags']        = array('Tags','Tag the entry with keywords.');
 $GLOBALS['TL_LANG']['tl_news4ward_article']['tags_legend']    = 'Tagging';
-
-
-?>
