@@ -12,7 +12,7 @@
  */
 namespace Psi\News4ward\Module;
 
-class Tags extends \News4ward\Module\Module
+class Tags extends Module
 {
     /**
    	 * Template
