@@ -122,9 +122,19 @@ class Tags extends Module
 			}
 		}
 
-		// randomly sort the array
-		if($this->news4ward_tags_shuffle) shuffle($arrTags);
-		else natsort($arrTags);
+		if($this->news4ward_tags_shuffle)
+		{
+			// randomly sort the array
+			if(!$_SESSION['news4wardTagsRandSeed']) $_SESSION['news4wardTagsRandSeed'] = mt_rand();
+			mt_srand($_SESSION['news4wardTagsRandSeed']);
+			$order = array_map(create_function('$val', 'return mt_rand();'), range(1, count($arrTags)));
+			array_multisort($order, $arrTags);
+		}
+		else
+		{
+			// sort by tag
+			natsort($arrTags);
+		}
 		$this->Template->tags = $arrTags;
 
 		$this->Template->unit = $this->news4ward_tags_unit;
