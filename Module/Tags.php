@@ -103,7 +103,7 @@ class Tags extends Module
 			if(!strlen(trim($v['tag']))) continue;
 
 			$arrTags[$k]['size'] = $this->GetTagSizeLogarithmic($v['cnt'],$minCount,$maxCount);
-			$arrTags[$k]['href'] = $this->generateFrontendUrl($objJumpTo->row(),'/tag/'.urlencode($v['tag']));
+			$arrTags[$k]['href'] = $this->generateFrontendUrl($objJumpTo->row(),'/tag/'.\News4ward\TagsHelper::encodeTag($v['tag']));
 			$arrTags[$k]['active'] = ($this->Input->get('tag') == $v['tag']);
 
 			// set active item for the active filter hinting

@@ -78,7 +78,7 @@ class TagsHelper extends \Controller
 				$arrTags[] = array
 				(
 					'tag' 	=> $objTags->tag,
-					'href'	=> $this->generateFrontendUrl(self::$arrJumpTo[$objArticles->pid],'/tag/'.urlencode($objTags->tag))
+					'href'	=> $this->generateFrontendUrl(self::$arrJumpTo[$objArticles->pid],'/tag/'.self::encodeTag($objTags->tag))
 				);
 			}
 			else
@@ -86,7 +86,7 @@ class TagsHelper extends \Controller
 				$arrTags[] = array
 				(
 					'tag' 	=> $objTags->tag,
-					'href'	=> $this->generateFrontendUrl($GLOBALS['objPage']->row(),'/tag/'.urlencode($objTags->tag))
+					'href'	=> $this->generateFrontendUrl($GLOBALS['objPage']->row(),'/tag/'.self::encodeTag($objTags->tag))
 				);
 			}
 		}
@@ -94,6 +94,18 @@ class TagsHelper extends \Controller
 		$objTemplate->tags = $arrTags;
 
 	}
-}
 
-?>
+
+	public static function encodeTag($tag)
+	{
+		$tag = str_replace('/', '--', $tag);
+		return urlencode($tag);
+	}
+
+
+	public static function decodeTag($tag)
+	{
+		$tag = urldecode($tag);
+		return str_replace('--', '/', $tag);
+	}
+}
