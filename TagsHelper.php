@@ -25,10 +25,12 @@ class TagsHelper extends \Controller
 	public function listFilter()
 	{
 		if(!$this->Input->get('tag')) return false;
-
-		$tag = mysql_real_escape_string(urldecode($this->Input->get('tag')));
-
-		return 'EXISTS (SELECT * FROM tl_news4ward_tag WHERE tl_news4ward_article.id=tl_news4ward_tag.pid AND tag="'.$tag.'")';
+		$tag = self::decodeTag($this->Input->get('tag'));
+		return array
+		(
+			'where'=>'EXISTS (SELECT * FROM tl_news4ward_tag WHERE tl_news4ward_article.id=tl_news4ward_tag.pid AND tag=?)',
+			'values'=>array($tag)
+		);
 	}
 
 
