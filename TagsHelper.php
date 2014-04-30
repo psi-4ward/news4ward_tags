@@ -38,18 +38,16 @@ class TagsHelper extends \Controller
 	 * Add tags to the template
 	 *
 	 * @param Object $obj
-	 * @param array $arrArticles
+	 * @param array $arrArticle
 	 * @param FrontendTemplate $objTemplate
 	 */
-	public function tagsParseArticle($obj, $arrArticles, $objTemplate)
+	public function tagsParseArticle($obj, $arrArticle, $objTemplate)
 	{
 		$this->import('Database');
 
 		$arrTags = array();
 
-        $arrArticles = $arrArticles[0];
-
-		$objTags = $this->Database->prepare('SELECT tag FROM tl_news4ward_tag WHERE pid=?')->execute($arrArticles['id']);
+		$objTags = $this->Database->prepare('SELECT tag FROM tl_news4ward_tag WHERE pid=?')->execute($arrArticle['id']);
 		if(!$objTags->numRows)
 		{
 			$objTemplate->tags = array();
@@ -57,31 +55,31 @@ class TagsHelper extends \Controller
 		}
 
 
-		if(!isset(self::$arrJumpTo[$arrArticles['pid']]))
+		if(!isset(self::$arrJumpTo[$arrArticle['pid']]))
 		{
 			$objJumpTo = $this->Database->prepare('SELECT tl_page.id, tl_page.alias
 													FROM tl_page
 													LEFT JOIN tl_news4ward ON (tl_page.id=tl_news4ward.jumpToList)
 													WHERE tl_news4ward.id=?')
-								->execute($arrArticles['pid']);
+								->execute($arrArticle['pid']);
 			if($objJumpTo->numRows)
 			{
-				self::$arrJumpTo[$arrArticles['pid']] = $objJumpTo->row();
+				self::$arrJumpTo[$arrArticle['pid']] = $objJumpTo->row();
 			}
 			else
 			{
-				self::$arrJumpTo[$arrArticles['pid']] = false;
+				self::$arrJumpTo[$arrArticle['pid']] = false;
 			}
 		}
 
 		while($objTags->next())
 		{
-			if(self::$arrJumpTo[$arrArticles['pid']])
+			if(self::$arrJumpTo[$arrArticle['pid']])
 			{
 				$arrTags[] = array
 				(
 					'tag' 	=> $objTags->tag,
-					'href'	=> $this->generateFrontendUrl(self::$arrJumpTo[$arrArticles['pid']],'/tag/'.self::encodeTag($objTags->tag))
+					'href'	=> $this->generateFrontendUrl(self::$arrJumpTo[$arrArticle['pid']],'/tag/'.self::encodeTag($objTags->tag))
 				);
 			}
 			else
