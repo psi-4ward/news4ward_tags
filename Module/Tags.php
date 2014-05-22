@@ -48,7 +48,14 @@ class Tags extends Module
 			return '';
 		}
 
-		return parent::generate();
+		$strBuffer = parent::generate();
+
+		if (count($this->Template->tags) == 0)
+		{
+			return '';
+		}
+
+		return $strBuffer;
 	}
 
 
