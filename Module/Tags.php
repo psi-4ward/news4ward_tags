@@ -42,6 +42,11 @@ class Tags extends Module
 
 		$this->news_archives = $this->sortOutProtected(deserialize($this->news4ward_archives));
 
+		// Threshold can never be 1, that would lead to a division by zero
+		if ($this->$this->news4ward_tags_tresholds == 1) {
+			$this->news4ward_tags_tresholds = 2;
+		}
+
 		// Return if there are no archives
 		if (!is_array($this->news_archives) || count($this->news_archives) < 1)
 		{
@@ -157,6 +162,11 @@ class Tags extends Module
 	 */
 	protected function GetTagSizeLogarithmic($count, $mincount, $maxcount)
 	{
+		// If min and max font size are identical, we don't need to do anything
+		if ($mincount == $maxcount) {
+			return $mincount;
+		}
+
 		$treshold = ($this->news4ward_tags_maxsize-$this->news4ward_tags_minsize)/($this->news4ward_tags_tresholds-1);
 		$a = $this->news4ward_tags_tresholds*log($count - $mincount+2)/log($maxcount - $mincount+2)-1;
 		return round($this->news4ward_tags_minsize+round($a)*$treshold);
