@@ -43,7 +43,7 @@ class Tags extends Module
 		$this->news_archives = $this->sortOutProtected(deserialize($this->news4ward_archives));
 
 		// Threshold can never be 1, that would lead to a division by zero
-		if ($this->$this->news4ward_tags_tresholds == 1) {
+		if ($this->news4ward_tags_tresholds == 1) {
 			$this->news4ward_tags_tresholds = 2;
 		}
 
