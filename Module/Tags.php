@@ -93,8 +93,12 @@ class Tags extends Module
 		}
 
 		$arrTags = $objTags->fetchAllAssoc();
-		$maxCount = $arrTags[0]['cnt'];
-		$minCount = $arrTags[count($arrTags)-1]['cnt'];
+		$maxCount = 0;
+		$minCount = PHP_INT_MAX;
+		foreach ($arrTags as $tag) {
+			$tag['cnt'] > $maxCount && $maxCount = $tag['cnt'];
+			$tag['cnt'] < $minCount && $minCount = $tag['cnt'];
+		}
 
 		// get jumpTo page
 		if($this->jumpTo)
@@ -167,9 +171,9 @@ class Tags extends Module
 			return $mincount;
 		}
 
-		$treshold = ($this->news4ward_tags_maxsize-$this->news4ward_tags_minsize)/($this->news4ward_tags_tresholds-1);
-		$a = $this->news4ward_tags_tresholds*log($count - $mincount+2)/log($maxcount - $mincount+2)-1;
-		return round($this->news4ward_tags_minsize+round($a)*$treshold);
+		$treshold = ($this->news4ward_tags_maxsize - $this->news4ward_tags_minsize) / ($this->news4ward_tags_tresholds - 1);
+		$a = $this->news4ward_tags_tresholds * log($count - $mincount + 2) / log($maxcount - $mincount + 2) - 1;
+		return round($this->news4ward_tags_minsize + round($a) * $treshold);
 	}
 
 }
