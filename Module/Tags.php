@@ -77,7 +77,7 @@ class Tags extends Module
 											 							 AND (tl_news4ward_article.stop='' OR tl_news4ward_article.stop>".time().")
 											 							 AND tl_news4ward_article.status='published'" : '').'
 											 GROUP BY tag
-											 ORDER BY cnt DESC');
+											 ORDER BY ' . ($this->news4ward_tags_random ? 'RAND()' : 'cnt') . ' DESC');
 
 		// limit tag count
 		if($this->news4ward_tags_count > 0)
