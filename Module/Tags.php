@@ -112,6 +112,8 @@ class Tags extends Module
 			$objJumpTo = $GLOBALS['objPage'];
 		}
 
+		$this->Template->resetHref = $this->generateFrontendUrl($objJumpTo->row());
+
 		// calc font-sizes and jumpto-pages
 		foreach($arrTags as $k => $v)
 		{
