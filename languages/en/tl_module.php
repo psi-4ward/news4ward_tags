@@ -18,3 +18,4 @@ $GLOBALS['TL_LANG']['tl_module']['news4ward_tags_maxsize']  	= array('Maximum fo
 $GLOBALS['TL_LANG']['tl_module']['news4ward_tags_tresholds']  	= array('Graduation', 'Here you can enter graduation value.');
 $GLOBALS['TL_LANG']['tl_module']['news4ward_tags_unit']  		= array('Graduation unit', 'Here you can select the graduation unit.');
 $GLOBALS['TL_LANG']['tl_module']['news4ward_tags_shuffle']  	= array('Random sort', 'Sort the tags randomly.');
+$GLOBALS['TL_LANG']['tl_module']['news4ward_tags_random']  		= array('Random selection', 'The tags are selected randomly instead of relevance.');

@@ -18,3 +18,4 @@ $GLOBALS['TL_LANG']['tl_module']['news4ward_tags_maxsize']  	= array('Größte S
 $GLOBALS['TL_LANG']['tl_module']['news4ward_tags_tresholds']  	= array('Abstufungen', 'Die Anzahl der Abstufungen.');
 $GLOBALS['TL_LANG']['tl_module']['news4ward_tags_unit']  		= array('Einheit', 'Hier können Sie die Einheit der Textgröße angeben.');
 $GLOBALS['TL_LANG']['tl_module']['news4ward_tags_shuffle']  	= array('Zufällig sortieren', 'Die Tagcloud wird zufällig sortiert.');
+$GLOBALS['TL_LANG']['tl_module']['news4ward_tags_random']  		= array('Zufällig auswählen', 'Die Schlagworte werden zufällig ausgewählt, statt nach Häufigkeit.');
