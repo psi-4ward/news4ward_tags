@@ -59,8 +59,15 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['news4ward_tags_shuffle'] = array
 	'default'	=> 1,
 	'eval'		=> array('tl_class'=>'w50')
 );
+$GLOBALS['TL_DCA']['tl_module']['fields']['news4ward_tags_random'] = array
+(
+	'label'		=> &$GLOBALS['TL_LANG']['tl_module']['news4ward_tags_random'],
+	'inputType'	=> 'checkbox',
+	'default'	=> 0,
+	'eval'		=> array('tl_class'=>'w50')
+);
 
 // Palette
-$GLOBALS['TL_DCA']['tl_module']['palettes']['news4wardTags']    = '{title_legend},name,headline,type;{config_legend},news4ward_archives,news4ward_filterHint,news4ward_tags_count,news4ward_tags_minsize,news4ward_tags_maxsize,news4ward_tags_tresholds,news4ward_tags_unit,news4ward_tags_shuffle;{redirect_legend},jumpTo;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['news4wardTags']    = '{title_legend},name,headline,type;{config_legend},news4ward_archives,news4ward_filterHint,news4ward_tags_count,news4ward_tags_minsize,news4ward_tags_maxsize,news4ward_tags_tresholds,news4ward_tags_unit,news4ward_tags_shuffle,news4ward_tags_random;{redirect_legend},jumpTo;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
 
 ?>
