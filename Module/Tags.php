@@ -103,7 +103,7 @@ class Tags extends Module
 		// get jumpTo page
 		if($this->jumpTo)
 		{
-			$objJumpTo = $this->Database->prepare('SELECT id,alias FROM tl_page WHERE id=?')->execute($this->jumpTo);
+			$objJumpTo = $this->Database->prepare('SELECT * FROM tl_page WHERE id=?')->execute($this->jumpTo);
 			if(!$objJumpTo->numRows)
 				$objJumpTo = $GLOBALS['objPage'];
 		}
