@@ -57,11 +57,11 @@ class TagsHelper extends \Controller
 
 		if(!isset(self::$arrJumpTo[$arrArticle['pid']]))
 		{
-			$objJumpTo = $this->Database->prepare('SELECT tl_page.id, tl_page.alias
+			$objJumpTo = $this->Database->prepare('SELECT tl_page.*
 													FROM tl_page
 													LEFT JOIN tl_news4ward ON (tl_page.id=tl_news4ward.jumpToList)
 													WHERE tl_news4ward.id=?')
-								->execute($arrArticle['id']);
+								->execute($arrArticle['pid']);
 			if($objJumpTo->numRows)
 			{
 				self::$arrJumpTo[$arrArticle['pid']] = $objJumpTo->row();
