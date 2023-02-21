@@ -1,5 +1,5 @@
 {
-  "name": "psi/news4ward_tags",
+  "name": "imi/news4ward_tags",
   "description": "Tags and tagcloud for News4ward",
   "keywords": ["news", "blog", "tags"],
   "type": "contao-module",
@@ -10,14 +10,18 @@
       "email": "wio@psitrax.de.de",
       "homepage": "http://4wardmedia.de",
       "role": "Developer"
+    },
+    {
+      "name": "iMi digital GmbH",
+      "homepage": "https://www.imi-digital.de",
+      "role": "Maintainer"
     }
   ],
   "support": {
     "email": "wio@psitrax.de.de",
-    "issues": "https://github.com/psi-4ward/news4ward_tags/issues?direction=desc&sort=created&state=open",
     "forum": "https://community.contao.org/de/forumdisplay.php?110-4ward",
     "irc": "irc://irc.freenode.org/contao.de",
-    "source": "https://github.com/psi-4ward/news4ward_tags"
+    "source": "https://github.com/imi-digital/news4ward_tags"
   },
   "require": {
     "php": ">=5.3",
@@ -27,7 +31,8 @@
     "psi/tags-widget": "~2"
   },
   "replace": {
-    "contao-legacy/news4ward_tags": "*"
+    "contao-legacy/news4ward_tags": "*",
+    "psi/news4ward": "self.version"
   },
   "extra": {
     "contao": {
