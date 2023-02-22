@@ -28,7 +28,7 @@
     "contao/core-bundle": "^3.2.1 || ^4.4",
     "contao-community-alliance/composer-plugin": "^2.4 || ^3.0",
     "imi/news4ward": "~2",
-    "psi/tags-widget": "~2"
+    "imi/tags-widget": "~2"
   },
   "replace": {
     "contao-legacy/news4ward_tags": "*",
